@@ -91,3 +91,70 @@ src =“js / script.js”=> src =“js / script.js？v = 2”
 
 1. 只要可能，使用triple equals来测试等式，因为松散等式==可能会得到不直观的结果。
 2. ==会把两边转换成相同类型再进行严格比较
+
+### 七.React中组件和元素的区别
+
+1. 元素是表示DOM节点或组件的普通JavaScript对象。元素是纯净的，不会发生变异，而且创造成本很低。
+2. 组件可以是类或函数，它们以props作为输入并返回元素树作为输出。同时带有生命周期,创造成本比较高。
+
+### 八.用flex属性让三块div占据不同比例的区域
+
+```html
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-7"></div>
+  <div class="col-3"></div>
+</div>
+```
+
+>flex 属性可以指定1个，2个或3个值。
+
+>**单值语法**: 值必须为以下其中之一:
+一个无单位数(<number>): 它会被当作<flex-grow>的值。
+一个有效的宽度(width)值: 它会被当作 <flex-basis>的值。
+关键字none, auto,或initial.
+
+>**双值语法**: 第一个值必须为一个无单位数，并且它会被当作 <flex-grow> 的值。第二个值必须为以下之一：
+一个无单位数：它会被当作 <flex-shrink> 的值。
+一个有效的宽度值: 它会被当作 <flex-basis> 的值。
+
+>**三值语法**:
+第一个值必须为一个无单位数，并且它会被当作 <flex-grow> 的值。
+第二个值必须为一个无单位数，并且它会被当作  <flex-shrink> 的值。
+第三个值必须为一个有效的宽度值， 并且它会被当作 <flex-basis> 的值。
+
+答案:
+```css
+.row {
+  display: flex;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-7 {
+  flex: 7;
+}
+
+.col-3 {
+  flex: 3;
+}
+```
+
+### 九.一个web页面是否可以存在多个< header >和< footer >?
+
+1. 这两个标签代表的是最近的祖先section的信息。比如
+
+```html
+<body>
+  <header></header>
+  <footer></footer>
+  <section>
+    <header></header>
+    <footer></footer>
+  </section>
+</body>
+```
+
+2. W3建议你想要多少就可以有多少，但是对于你页面的每一个“section”，比如body、section标签等，每个部分只能有一个。
