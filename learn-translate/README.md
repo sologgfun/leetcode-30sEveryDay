@@ -187,3 +187,11 @@ src =“js / script.js”=> src =“js / script.js？v = 2”
 * @keyframes, 描述 CSS 动画的中间步骤 . 
 * @supports, 如果满足给定条件则条件规则组里的规则生效。 
 * @document, 如果文档样式表满足给定条件则条件规则组里的规则生效。 (推延至 CSS Level 4 规范)
+
+### 十二.vue-lazyloader怎么实现的
+简单来说
+
+1. 首先通过vue.directive注册一个全局自定义指令并利用对应的钩子参数把对应的图片加入listener队列
+2. 在window或对应的父元素上注册dom事件(scroll)
+3. 上面的dom事件回调中，会遍历 listener queue里的listener，判断此listener绑定的dom是否处于页面中perload的位置，如果处于则加载异步加载当前图片的资源
+4. 同时listener会在当前图片加载的过程的loading，loaded，error三种状态触发当前dom渲染的函数，分别渲染三种状态下dom的内容
